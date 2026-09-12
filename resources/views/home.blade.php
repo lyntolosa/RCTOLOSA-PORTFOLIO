@@ -464,4 +464,31 @@ Object.keys(localImagesByAlt).forEach(function (alt) {
   const image = document.querySelector('img[alt="' + alt.replace(/"/g, '\\"') + '"]');
   if (image) image.src = localImagesByAlt[alt];
 });
+const ecommerceCard = Array.from(document.querySelectorAll('#work h3')).find(function (heading) {
+  return heading.textContent.trim() === 'GuroGrid';
+});
+if (ecommerceCard) {
+  const card = ecommerceCard.closest('.rounded-2xl');
+  const thumbnail = card.querySelector('img');
+  const projectLabel = card.querySelector('.absolute span');
+  const detailText = card.querySelectorAll('.space-y-2 p');
+  const actionLinks = card.querySelectorAll('a');
+  ecommerceCard.textContent = 'E-commerce Web App';
+  if (thumbnail) {
+    thumbnail.src = "{{ asset('images/ecommerce-web-app-thumbnail.png') }}";
+    thumbnail.alt = 'E-commerce web app storefront and dashboard';
+  }
+  if (projectLabel) projectLabel.textContent = 'E-commerce Web App';
+  if (detailText[0]) detailText[0].textContent = 'Create a polished online shopping experience that makes products easy to discover and purchase.';
+  if (detailText[1]) detailText[1].textContent = 'A responsive storefront with product browsing, cart flow, and a simple sales dashboard.';
+  if (actionLinks[1]) actionLinks[1].textContent = 'View Storefront';
+}
+if (selectedProjectGrid && !selectedProjectGrid.querySelector('[data-project="coach-funnel"]')) {
+  const coachFunnelCard = document.createElement('div');
+  coachFunnelCard.className = 'rounded-2xl overflow-hidden bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 border border-outline-variant/25 flex flex-col selected-project-card';
+  coachFunnelCard.dataset.project = 'coach-funnel';
+  coachFunnelCard.dataset.selectedCategory = 'web-digital-category';
+  coachFunnelCard.innerHTML = `<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container"><img alt="Sales funnel system for online coaches" class="w-full h-full object-cover" src="{{ asset('images/sales-funnel-online-coaches-thumbnail.png') }}"><div class="absolute top-3 left-3"><span class="px-2.5 py-1 rounded bg-surface-container-lowest/95 backdrop-blur-md text-on-surface font-label-sm text-[10px] font-bold uppercase tracking-wider shadow-2xs">Concept Web Project</span></div></div><div class="p-space-lg flex flex-col justify-between flex-1"><div class="mb-space-md"><h3 class="font-headline-sm text-xl text-on-surface font-bold mb-space-xs">Sales Funnel for Online Coaches</h3><div class="space-y-2 text-xs"><div><span class="font-label-sm uppercase tracking-wider text-[10px] font-bold text-primary block">Goal</span><p class="font-body-sm text-on-surface-variant leading-relaxed">Help online coaches turn interested visitors into qualified calls and program enrollments.</p></div><div class="pt-1"><span class="font-label-sm uppercase tracking-wider text-[10px] font-bold text-secondary block">Solution / What I Created</span><p class="font-body-sm text-on-surface-variant leading-relaxed">A conversion-focused funnel with a lead magnet, email nurture flow, sales page, and booking CTA.</p></div></div></div><div class="flex flex-wrap items-center gap-2 pt-space-xs border-t border-outline-variant/20"><a class="px-space-sm py-1.5 rounded bg-primary text-on-primary font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-tertiary transition-colors" href="#contact">View Details</a><a class="px-space-sm py-1.5 rounded bg-surface-container text-on-surface font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-surface-container-highest transition-colors" href="#contact">View Funnel Flow</a></div></div>`;
+  selectedProjectGrid.appendChild(coachFunnelCard);
+}
 </script><script src="{{ asset('js/app.js') }}"></script></body></html>
