@@ -189,26 +189,279 @@ document.querySelectorAll('#creative-design-samples video').forEach(function (vi
   card.innerHTML = `<img class="w-full aspect-[4/5] rounded-lg object-cover border border-outline-variant/20" src="/${item[1]}" alt="${item[2]} — ${item[3]}"><p class="font-label-sm text-[10px] uppercase tracking-wider text-primary mt-3">${item[2]}</p><p class="font-body-sm text-xs text-on-surface font-semibold mt-1">${item[3]}</p>`;
 });
 [
-  ['COPY 01', 'PrimeNest Realty', `Your next chapter could begin behind this front door. Discover a modern family home with open living spaces, lush surroundings, and everyday comfort. Schedule a private viewing today.`],
-  ['COPY 02', 'PrimeNest Realty', `Still searching for a home that truly fits your life? Explore thoughtfully designed properties with room to relax, grow, and create lasting memories. Explore PrimeNest properties now.`],
-  ['COPY 03', 'GlowHaus Beauty Studio', `A little change can make you feel brand new. Refresh your look with a professional haircut and blowout designed to leave your hair polished, healthy, and easy to style. Book your Signature Hair Refresh for $49.`],
-  ['COPY 04', 'GlowHaus Beauty Studio', `Your glow-up is overdue. Take one appointment for yourself and leave with refreshed hair, renewed confidence, and a style you will love showing off. Reserve your beauty session this week.`],
-  ['COPY 05', 'Brew & Bloom Café', `Meet your new favorite latte. Smooth espresso, creamy oat milk, and a touch of honey come together in every sip. Drop by Brew & Bloom Café today.`],
-  ['COPY 06', 'Brew & Bloom Café', `A little sweetness makes the morning better. Enjoy a warm Honey Oat Latte crafted for a smooth, comforting finish. Try it for $6.50 today.`],
-  ['COPY 07', 'LearnLab Academy', `You do not need perfect English to start speaking with confidence. Learn practical vocabulary, practice real conversations, and improve one step at a time. Enroll in the next English class.`],
-  ['COPY 08', 'LearnLab Academy', `Practice makes progress—not perfection. Join a guided online lesson to learn useful phrases, practice speaking, and build confidence with support. Start learning with Ms. Andrea Cruz.`],
-  ['COPY 09', 'Soléa Fashion Co.', `One blazer. Three everyday looks. The Everyday Edit brings together neutral, timeless pieces designed to mix, match, and move with your routine. Discover the new collection.`],
-  ['COPY 10', 'Soléa Fashion Co.', `Your everyday wardrobe just got easier. Choose refined neutral pieces that take you from casual mornings to polished plans with minimal effort. Shop The Everyday Edit, from $42–$89.`]
+  ['COPY 01', 'PrimeNest Realty', `Tired of searching for a modern family home that actually fits your lifestyle?<br><br>It’s frustrating to view property after property only to find limited space, outdated interiors, or a location that doesn’t feel right. You waste time, miss great opportunities, and still haven’t found a place to call home.<br><br>Meet PrimeNest Realty. Our curated property listings help you discover modern homes with spacious living areas, thoughtful designs, and comfortable spaces for your family.<br><br>“This made our home search easier and less stressful.” – Sample Client Testimonial<br><br>Click below to explore your next home today!<br>👉 Explore PrimeNest Properties<br>[Insert Landing Page Link]`],
+  ['COPY 02', 'PrimeNest Realty', `Hirap ka pa rin bang maghanap ng bahay na swak talaga sa’yo at sa lifestyle ng family mo?<br><br>Nakaka-frustrate mag-check ng maraming listings pero kulang ang details, malabo ang photos, o hindi tugma sa needs mo. Nauubos ang oras mo, nai-stress ka, at baka ma-miss mo pa ang perfect home.<br><br>Meet PrimeNest Realty. Mas pinapadali namin ang paghahanap ng dream home through carefully selected property listings, clear details, at modern homes na comfortable para sa everyday living.<br><br>“Mas naging madali at less stressful ang paghahanap namin ng bahay dahil sa PrimeNest.” – Sample Client Testimonial<br><br>Click below para ma-discover ang dream home mo today!<br>👉 Explore PrimeNest Properties<br>[Insert Landing Page Link]`],
+  ['COPY 03', 'GlowHaus Beauty Studio', `Tired of dull, difficult-to-manage hair?<br><br>It’s frustrating when your hair looks dry, flat, or unstyled no matter how much effort you put in. You spend time getting ready but still don’t feel confident with your look.<br><br>Meet GlowHaus Beauty Studio. Our Signature Hair Refresh includes a professional haircut and blowout to give you polished, fresh, and easy-to-style hair.<br><br>“I left feeling refreshed, confident, and ready for the week.” – Sample Client Testimonial<br><br>Click below to book your Signature Hair Refresh for only $49 today!<br>👉 Book Your Appointment<br>[Insert Booking Link]`],
+  ['COPY 04', 'GlowHaus Beauty Studio', `Pagod ka na ba sa buhok na laging dry, dull, at mahirap i-style?<br><br>Nakaka-frustrate kapag kahit anong ayos mo, hindi pa rin fresh tingnan ang hair mo. Nauubos ang oras mo sa pag-prepare pero hindi ka pa rin confident sa final look.<br><br>Meet GlowHaus Beauty Studio. Sa aming Signature Hair Refresh, makakakuha ka ng professional haircut and blowout para mas polished, fresh, at madaling ayusin ang buhok mo.<br><br>“After my appointment, mas fresh at confident na ang feeling ko.” – Sample Client Testimonial<br><br>Book your beauty refresh for only $49 today!<br>👉 Book Your Appointment<br>[Insert Booking Link]`],
+  ['COPY 05', 'Brew & Bloom Café', `Tired of the same ordinary coffee every morning?<br><br>It’s disappointing when your coffee feels plain, rushed, and forgettable. You deserve a drink that makes your morning feel a little warmer and more enjoyable.<br><br>Meet Brew & Bloom Café’s Honey Oat Latte—made with smooth espresso, creamy oat milk, and a touch of honey for a comforting sweetness in every sip.<br><br>“My new favorite latte—smooth, creamy, and just the right amount of sweet.” – Sample Customer Testimonial<br><br>Click below to try the Honey Oat Latte for only $6.50 today!<br>👉 Drop By Today<br>[Insert Café Location or Link]`],
+  ['COPY 06', 'Brew & Bloom Café', `Nagsasawa ka na ba sa ordinary coffee na pare-pareho ang lasa?<br><br>Nakaka-disappoint kapag ang morning coffee mo ay plain, rushed, at walang special feeling. Minsan, kailangan mo lang ng comforting drink para mas maging enjoyable ang araw mo.<br><br>Try Brew & Bloom Café’s Honey Oat Latte—made with smooth espresso, creamy oat milk, at tamang sweetness ng honey sa bawat sip.<br><br>“Bagong favorite latte ko—creamy, smooth, at sakto lang ang tamis.” – Sample Customer Testimonial<br><br>Try the Honey Oat Latte for only $6.50 today!<br>👉 Drop By Today<br>123 Garden Lane | Open daily, 7 AM–8 PM`],
+  ['COPY 07', 'LearnLab Academy', `Struggling to speak English with confidence?<br><br>It’s frustrating when you know what you want to say but hesitate because of grammar mistakes or limited vocabulary. You miss opportunities to communicate, participate, and express yourself clearly.<br><br>Meet LearnLab Academy. Our practical English lessons help you learn useful vocabulary, practice real conversations, and build confidence step by step.<br><br>“LearnLab helped me feel more comfortable speaking English every day.” – Sample Student Testimonial<br><br>Click below to enroll in the next class with Ms. Andrea Cruz!<br>👉 Start Learning Today<br>[Insert Enrollment Link]`],
+  ['COPY 08', 'LearnLab Academy', `Nahihirapan ka bang magsalita ng English nang confident?<br><br>Nakaka-frustrate kapag alam mo naman ang gusto mong sabihin pero naghe-hesitate ka dahil sa grammar mistakes o kulang sa vocabulary. Nawawala ang chance mong makapag-express nang maayos at makipag-communicate confidently.<br><br>Meet LearnLab Academy. Matututo ka ng practical English, useful phrases, at real conversation skills para unti-unti kang maging mas confident sa pagsasalita.<br><br>“Mas naging comfortable akong magsalita ng English dahil sa LearnLab.” – Sample Student Testimonial<br><br>Enroll sa next class with Ms. Andrea Cruz!<br>👉 Start Learning Today<br>[Insert Enrollment Link]`],
+  ['COPY 09', 'Soléa Fashion Co.', `Struggling to create stylish outfits every day?<br><br>It’s frustrating to have a full closet but still feel like you have nothing to wear. Choosing outfits takes time, and many pieces don’t work well together.<br><br>Meet Soléa Fashion Co.’s The Everyday Edit—a collection of neutral, timeless pieces designed to mix, match, and create effortless everyday looks.<br><br>“These pieces made getting dressed easier and more stylish.” – Sample Customer Testimonial<br><br>Click below to discover the new collection, with pieces from $42–$89.<br>👉 Shop the Collection<br>[Insert Shop Link]`],
+  ['COPY 10', 'Soléa Fashion Co.', `Nahihirapan ka bang mag-isip ng stylish outfit araw-araw?<br><br>Nakaka-frustrate kapag puno ang closet mo pero feeling mo wala ka pa ring maisuot. Matagal kang pumipili ng outfit, pero hindi nagtutugma ang mga pieces.<br><br>Meet The Everyday Edit by Soléa Fashion Co.—neutral and timeless pieces na madaling i-mix and match para makagawa ka ng effortless everyday looks.<br><br>“Mas naging madali at stylish ang pag-dress up ko dahil sa collection na ito.” – Sample Customer Testimonial<br><br>Discover the new collection, with pieces from $42–$89.<br>👉 Shop the Collection<br>[Insert Shop Link]`]
 ].forEach(function (item) {
   const label = Array.from(document.querySelectorAll('span')).find(function (candidate) {
     return candidate.textContent.trim().toUpperCase() === item[0];
   });
   const card = label ? label.closest('.rounded-xl') : null;
   if (!card) return;
-  card.innerHTML = `<span class="font-mono text-sm font-bold text-primary">${item[0]}</span><p class="font-label-sm text-[10px] uppercase tracking-wider text-primary mt-3">${item[1]}</p><p class="font-body-sm text-[11px] text-on-surface-variant mt-2 leading-relaxed">${item[2]}</p>`;
+  card.classList.add('group', 'relative', 'overflow-hidden', 'transition-all', 'duration-200');
+  card.innerHTML = `<div class="flex items-start justify-between gap-2"><span class="font-mono text-sm font-bold text-primary">${item[0]}</span><button type="button" aria-expanded="false" class="copy-expand-button shrink-0 inline-flex items-center gap-1 rounded bg-surface-container-highest px-2 py-1 text-[10px] font-label-sm font-bold uppercase tracking-wider text-primary transition-colors duration-200 hover:bg-primary hover:text-on-primary focus:outline-none focus:ring-2 focus:ring-primary/40"><span class="material-symbols-outlined text-[14px] leading-none">open_in_full</span><span>Expand</span></button></div><p class="font-label-sm text-[10px] uppercase tracking-wider text-primary mt-3">${item[1]}</p><p class="copy-preview font-body-sm text-[11px] text-on-surface-variant mt-2 leading-relaxed line-clamp-3">${item[2]}</p>`;
+  const button = card.querySelector('.copy-expand-button');
+  const preview = card.querySelector('.copy-preview');
+  const icon = button.querySelector('.material-symbols-outlined');
+  const buttonLabel = button.querySelector('span:last-child');
+  button.addEventListener('click', function (event) {
+    event.stopPropagation();
+    const expanded = card.classList.toggle('copy-card-expanded');
+    preview.classList.toggle('line-clamp-3', !expanded);
+    icon.textContent = expanded ? 'close_fullscreen' : 'open_in_full';
+    buttonLabel.textContent = expanded ? 'Minimize' : 'Expand';
+    button.setAttribute('aria-expanded', String(expanded));
+  });
+});
+document.addEventListener('click', function (event) {
+  document.querySelectorAll('.copy-card-expanded').forEach(function (card) {
+    if (card.contains(event.target)) return;
+    card.classList.remove('copy-card-expanded');
+    const preview = card.querySelector('.copy-preview');
+    const button = card.querySelector('.copy-expand-button');
+    const icon = button ? button.querySelector('.material-symbols-outlined') : null;
+    const buttonLabel = button ? button.querySelector('span:last-child') : null;
+    if (preview) preview.classList.add('line-clamp-3');
+    if (button) {
+      if (icon) icon.textContent = 'open_in_full';
+      if (buttonLabel) buttonLabel.textContent = 'Expand';
+      button.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+const socialMediaSection = document.querySelector('#social-media-samples');
+if (socialMediaSection) {
+  const sectionHeader = socialMediaSection.firstElementChild;
+  const selectedWorkNav = document.createElement('nav');
+  selectedWorkNav.setAttribute('aria-label', 'Selected work navigation');
+  selectedWorkNav.className = 'mt-1 mb-6 flex flex-wrap items-center gap-2';
+  selectedWorkNav.innerHTML = `<a class="selected-work-link" href="#non-ai-graphics">Non-AI sample graphics</a><a class="selected-work-link" href="#non-ai-reels">Non-AI sample reels</a><a class="selected-work-link" href="#copywriting-samples">Copywriting samples</a><a class="selected-work-link" href="#ai-graphics">AI-generated graphics</a><a class="selected-work-link" href="#ai-reels">AI-generated reels</a>`;
+  socialMediaSection.insertBefore(selectedWorkNav, sectionHeader.nextElementSibling);
+}
+[
+  ['Non-AI sample graphics', 'non-ai-graphics'],
+  ['Non-AI sample reels', 'non-ai-reels'],
+  ['Copywriting samples', 'copywriting-samples'],
+  ['AI-generated graphics', 'ai-graphics'],
+  ['AI-generated reels', 'ai-reels']
+].forEach(function (item) {
+  const heading = Array.from(document.querySelectorAll('h4')).find(function (candidate) {
+    return candidate.textContent.trim() === item[0];
+  });
+  if (heading) {
+    heading.id = item[1];
+    heading.classList.add('scroll-mt-28');
+  }
+});
+const selectedWorkLinkStyle = document.createElement('style');
+selectedWorkLinkStyle.textContent = `.selected-work-link{display:inline-flex;align-items:center;border-radius:9999px;background:#f3ede9;color:#56423d;padding:.55rem .8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:background-color .2s ease,color .2s ease,transform .2s ease}.selected-work-link:hover{background:#9a4023;color:#fff;transform:translateY(-1px)}.selected-work-link:focus-visible{outline:2px solid #9a4023;outline-offset:2px}`;
+document.head.appendChild(selectedWorkLinkStyle);
+const selectedWorkTitle = Array.from(document.querySelectorAll('h2')).find(function (heading) {
+  return heading.textContent.trim() === 'Selected Work';
+});
+const selectedWorkContainer = selectedWorkTitle ? selectedWorkTitle.closest('#work') : null;
+const selectedProjectGrid = Array.from(document.querySelectorAll('.grid')).find(function (grid) {
+  return Array.from(grid.children).some(function (card) {
+    const projectTitle = card.querySelector('h3');
+    return projectTitle && projectTitle.textContent.trim() === 'GuroGrid';
+  });
+});
+if (selectedWorkContainer && selectedProjectGrid) {
+  const selectedCategoryNavigation = document.createElement('nav');
+  selectedCategoryNavigation.setAttribute('aria-label', 'Selected work categories');
+  selectedCategoryNavigation.className = 'selected-category-navigation mt-6 mb-6 flex flex-wrap items-center gap-2';
+  selectedCategoryNavigation.innerHTML = `<a class="selected-category-link selected-category-link-active" href="#all-selected-work">All selected work</a><a class="selected-category-link" href="#social-content-category">Social &amp; Content</a><a class="selected-category-link" href="#ads-creative-category">Ads &amp; Creative</a><a class="selected-category-link" href="#web-digital-category">Web &amp; Digital</a>`;
+  // Keep the category tabs directly under the Selected Work description.
+  const selectedWorkIntro = selectedWorkTitle.closest('.max-w-2xl') || selectedWorkTitle.parentElement;
+  selectedWorkIntro.appendChild(selectedCategoryNavigation);
+
+  Array.from(selectedProjectGrid.children).forEach(function (card, index) {
+    card.dataset.selectedCategory = index < 3 ? 'web-digital-category' : index === 3 ? 'social-content-category' : 'ads-creative-category';
+    card.classList.add('selected-project-card');
+  });
+
+  const categoryLinks = Array.from(selectedCategoryNavigation.querySelectorAll('a'));
+  function activateSelectedCategory(category) {
+    selectedProjectGrid.classList.add('selected-category-switching');
+    window.setTimeout(function () {
+      selectedProjectGrid.querySelectorAll('.selected-project-card').forEach(function (card) {
+        const showCard = category === 'all-selected-work' || card.dataset.selectedCategory === category;
+        card.classList.toggle('selected-project-hidden', !showCard);
+      });
+      selectedProjectGrid.classList.remove('selected-category-switching');
+    }, 90);
+    categoryLinks.forEach(function (link) {
+      const active = link.getAttribute('href') === '#' + category;
+      link.classList.toggle('selected-category-link-active', active);
+      link.setAttribute('aria-current', active ? 'page' : 'false');
+    });
+  }
+  categoryLinks.forEach(function (link) {
+    link.addEventListener('mouseenter', function () {
+      activateSelectedCategory(link.getAttribute('href').slice(1));
+    });
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      activateSelectedCategory(link.getAttribute('href').slice(1));
+    });
+  });
+  activateSelectedCategory('all-selected-work');
+}
+const selectedWorkNavigation = document.querySelector('nav[aria-label="Selected work navigation"]');
+const selectedWorkSection = document.querySelector('#social-media-samples');
+const creativeDesignSection = document.querySelector('#creative-design-samples');
+if (selectedWorkNavigation && selectedWorkSection && creativeDesignSection) {
+  const panelHost = document.createElement('div');
+  panelHost.className = 'selected-work-panel-host';
+  selectedWorkNavigation.insertAdjacentElement('afterend', panelHost);
+  const panelDefinitions = [
+    ['non-ai-graphics', 'non-ai-reels', selectedWorkSection],
+    ['non-ai-reels', 'copywriting-samples', selectedWorkSection],
+    ['copywriting-samples', 'creative-design-samples', selectedWorkSection],
+    ['ai-graphics', 'ai-reels', creativeDesignSection],
+    ['ai-reels', null, creativeDesignSection]
+  ];
+  const panels = [];
+  function directChild(root, element) {
+    let current = element;
+    while (current && current.parentElement && current.parentElement !== root) {
+      current = current.parentElement;
+    }
+    return current && current.parentElement === root ? current : null;
+  }
+  panelDefinitions.forEach(function (definition) {
+    const heading = document.getElementById(definition[0]);
+    const nextHeading = definition[1] === 'creative-design-samples' ? creativeDesignSection : document.getElementById(definition[1]);
+    const sourceContainer = definition[2];
+    const start = heading ? directChild(sourceContainer, heading) : null;
+    const end = nextHeading ? directChild(sourceContainer, nextHeading) : null;
+    if (!start || !sourceContainer) return;
+    const panel = document.createElement('div');
+    panel.className = 'selected-work-panel';
+    panel.dataset.panelId = definition[0];
+    let node = start;
+    while (node && node !== end) {
+      const next = node.nextElementSibling;
+      if (node !== selectedWorkNavigation && node !== panelHost) panel.appendChild(node.cloneNode(true));
+      node = next;
+    }
+    panelHost.appendChild(panel);
+    panels.push(panel);
+  });
+  // Only hide the source sections after all five panels were built. This keeps
+  // the portfolio visible if a future content edit leaves one heading missing.
+  if (panels.length === panelDefinitions.length) {
+    selectedWorkSection.querySelectorAll(':scope > *').forEach(function (node) {
+      if (node !== selectedWorkNavigation && node !== panelHost) node.classList.add('hidden');
+    });
+    creativeDesignSection.classList.add('hidden');
+  }
+  const navigationLinks = Array.from(selectedWorkNavigation.querySelectorAll('a'));
+  function bindCopyButtons(panel) {
+    panel.querySelectorAll('.copy-expand-button').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.stopPropagation();
+        const card = button.closest('.rounded-xl');
+        const preview = card.querySelector('.copy-preview');
+        const icon = button.querySelector('.material-symbols-outlined');
+        const label = button.querySelector('span:last-child');
+        const expanded = card.classList.toggle('copy-card-expanded');
+        preview.classList.toggle('line-clamp-3', !expanded);
+        icon.textContent = expanded ? 'close_fullscreen' : 'open_in_full';
+        label.textContent = expanded ? 'Minimize' : 'Expand';
+        button.setAttribute('aria-expanded', String(expanded));
+      });
+    });
+  }
+  panels.forEach(bindCopyButtons);
+  function activateSelectedWorkPanel(panelId) {
+    panels.forEach(function (panel) {
+      panel.classList.toggle('is-active', panel.dataset.panelId === panelId);
+    });
+    navigationLinks.forEach(function (link) {
+      const active = link.getAttribute('href') === '#' + panelId;
+      link.classList.toggle('selected-work-link-active', active);
+      link.setAttribute('aria-current', active ? 'page' : 'false');
+    });
+  }
+  navigationLinks.forEach(function (link) {
+    link.addEventListener('mouseenter', function () {
+      activateSelectedWorkPanel(link.getAttribute('href').slice(1));
+    });
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      activateSelectedWorkPanel(link.getAttribute('href').slice(1));
+    });
+  });
+  activateSelectedWorkPanel('non-ai-graphics');
+}
+const selectedWorkPanelStyle = document.createElement('style');
+selectedWorkPanelStyle.textContent = `.selected-work-panel{display:none}.selected-work-panel.is-active{display:block;animation:selected-work-swipe .28s ease-out}.selected-work-link-active,.selected-category-link-active{background:#9a4023!important;color:#fff!important;box-shadow:0 0 0 2px rgba(154,64,35,.14)}.selected-category-link{display:inline-flex;align-items:center;border-radius:9999px;background:#f3ede9;color:#56423d;padding:.6rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.035em;transition:background-color .2s ease,color .2s ease,transform .2s ease}.selected-category-link:hover{background:#c2623f;color:#fff;transform:translateY(-1px)}.selected-category-link:focus-visible{outline:2px solid #9a4023;outline-offset:2px}.selected-work-link:not(.selected-work-link-active),.selected-category-link:not(.selected-category-link-active){animation:portfolio-nav-attention 3.6s ease-in-out infinite}.selected-work-link:nth-child(2),.selected-category-link:nth-child(2){animation-delay:.45s}.selected-work-link:nth-child(3),.selected-category-link:nth-child(3){animation-delay:.9s}.selected-work-link:nth-child(4),.selected-category-link:nth-child(4){animation-delay:1.35s}.selected-work-link:nth-child(5),.selected-category-link:nth-child(5){animation-delay:1.8s}.selected-project-card{transition:opacity .22s ease,transform .22s ease}.selected-project-hidden{display:none}.selected-category-switching .selected-project-card{opacity:.65;transform:translateX(10px)}@keyframes portfolio-nav-attention{0%,72%,100%{box-shadow:0 0 0 0 rgba(154,64,35,0)}80%{box-shadow:0 0 0 4px rgba(154,64,35,.16)}88%{box-shadow:0 0 0 0 rgba(154,64,35,0)}}@keyframes selected-work-swipe{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}`;
+document.head.appendChild(selectedWorkPanelStyle);
+const exitIntentStyle = document.createElement('style');
+exitIntentStyle.textContent = `.exit-intent-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:1.25rem;background:rgba(35,25,21,.48);backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .22s ease}.exit-intent-overlay.is-visible{opacity:1;pointer-events:auto}.exit-intent-card{width:min(100%, thirtyrem);max-width:30rem;border:1px solid rgba(154,64,35,.18);border-radius:1.25rem;background:#fffaf7;padding:2rem;box-shadow:0 24px 70px rgba(35,25,21,.25);transform:translateY(12px) scale(.98);transition:transform .22s ease}.exit-intent-overlay.is-visible .exit-intent-card{transform:translateY(0) scale(1)}.exit-intent-kicker{color:#9a4023;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.exit-intent-title{margin:.55rem 0 .65rem;color:#231916;font-family:Georgia,serif;font-size:clamp(1.65rem,4vw,2.2rem);line-height:1.08}.exit-intent-copy{color:#654e46;font-size:.95rem;line-height:1.6}.exit-intent-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.35rem}.exit-intent-primary,.exit-intent-secondary{border:0;border-radius:.55rem;padding:.75rem 1rem;font-size:.75rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}.exit-intent-primary{background:#9a4023;color:#fff}.exit-intent-secondary{background:#f0e8e3;color:#56423d}`.replace('thirtyrem','30rem');
+document.head.appendChild(exitIntentStyle);
+const exitIntentOverlay = document.createElement('div');
+exitIntentOverlay.className = 'exit-intent-overlay';
+exitIntentOverlay.setAttribute('role', 'dialog');
+exitIntentOverlay.setAttribute('aria-modal', 'true');
+exitIntentOverlay.setAttribute('aria-labelledby', 'exit-intent-title');
+exitIntentOverlay.innerHTML = `<div class="exit-intent-card"><div class="exit-intent-kicker">Before you go</div><h2 id="exit-intent-title" class="exit-intent-title">Need creative support for an upcoming launch?</h2><p class="exit-intent-copy">Let’s turn your idea into ready-to-publish content, graphics, captions, or a simple website.</p><div class="exit-intent-actions"><a class="exit-intent-primary" href="#contact">Book a Discovery Call</a><a class="exit-intent-secondary" href="#work">View My Work</a><button class="exit-intent-secondary" type="button">Saved for later</button></div></div>`;
+document.body.appendChild(exitIntentOverlay);
+let exitIntentShown = false;
+function closeExitIntent() {
+  exitIntentOverlay.classList.remove('is-visible');
+}
+function showExitIntent() {
+  if (exitIntentShown || sessionStorage.getItem('portfolio-exit-intent-seen') === 'true') return;
+  exitIntentShown = true;
+  sessionStorage.setItem('portfolio-exit-intent-seen', 'true');
+  exitIntentOverlay.classList.add('is-visible');
+}
+exitIntentOverlay.querySelectorAll('.exit-intent-secondary').forEach(function (button) {
+  button.addEventListener('click', closeExitIntent);
+});
+exitIntentOverlay.querySelector('.exit-intent-primary').addEventListener('click', closeExitIntent);
+exitIntentOverlay.addEventListener('click', function (event) {
+  if (event.target === exitIntentOverlay) closeExitIntent();
+});
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') closeExitIntent();
+});
+document.addEventListener('mouseleave', function (event) {
+  if (event.clientY <= 8) showExitIntent();
+});
+let portfolioHasMeaningfulInteraction = false;
+document.addEventListener('scroll', function () {
+  if (window.scrollY > 260) portfolioHasMeaningfulInteraction = true;
+}, { passive: true });
+document.addEventListener('click', function (event) {
+  if (event.target.closest('a, button, input, textarea, select')) portfolioHasMeaningfulInteraction = true;
+});
+window.addEventListener('beforeunload', function (event) {
+  if (!portfolioHasMeaningfulInteraction || sessionStorage.getItem('portfolio-close-warning-seen') === 'true') return;
+  sessionStorage.setItem('portfolio-close-warning-seen', 'true');
+  event.preventDefault();
+  event.returnValue = '';
+});
+const localImagesByAlt = {
+  'Ronalyn Tolosa': '/images/profile-pic.png',
+  "Portrait of Ma'am Lyn": '/images/profile-pic.png',
+  'GuroGrid digital educational planners and lesson templates': '/images/non-ai-graphic-04-learnlab.png',
+  'SalonFlow appointment and metrics dashboard mockup': '/images/non-ai-graphic-02-glowhaus.png',
+  'DriveFlow car rental reservations and fleet dashboard': '/images/non-ai-graphic-01-primenest.png',
+  'Social media carousel slides and visual grid mockup': '/images/non-ai-graphic-03-brew-bloom.png',
+  'Aesthetic mockup presentation of social media creatives and Canva templates': '/images/non-ai-graphic-05-solea.png'
+};
+Object.keys(localImagesByAlt).forEach(function (alt) {
+  const image = document.querySelector('img[alt="' + alt.replace(/"/g, '\\"') + '"]');
+  if (image) image.src = localImagesByAlt[alt];
 });
 </script><script src="{{ asset('js/app.js') }}"></script></body></html>
-
-
-
-
