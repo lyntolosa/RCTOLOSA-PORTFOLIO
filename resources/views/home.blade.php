@@ -43,7 +43,7 @@
 </a>
 </div>
 <p class="font-label-sm text-xs text-on-surface-variant/90 mb-space-lg italic">Available for selected ongoing support and project-based work.</p>
-<div class="flex flex-wrap items-center gap-2 font-label-sm text-xs text-on-surface-variant"><span class="px-2.5 py-1 rounded bg-surface-container font-medium">Social &amp; Content</span><span class="px-2.5 py-1 rounded bg-surface-container font-medium">Creative Design</span><span class="px-2.5 py-1 rounded bg-surface-container font-medium">Meta Ads</span><span class="px-2.5 py-1 rounded bg-surface-container font-medium">Web &amp; Digital</span></div>
+<div class="flex flex-wrap items-center gap-2 font-label-sm text-xs text-on-surface-variant" aria-label="Filter selected work"><button type="button" class="hero-work-filter px-2.5 py-1 rounded bg-surface-container font-medium" data-work-filter="social-content-category">Social &amp; Content</button><button type="button" class="hero-work-filter px-2.5 py-1 rounded bg-surface-container font-medium" data-work-filter="ads-creative-category">Creative Design</button><button type="button" class="hero-work-filter px-2.5 py-1 rounded bg-surface-container font-medium" data-work-filter="ads-creative-category">Meta Ads</button><button type="button" class="hero-work-filter px-2.5 py-1 rounded bg-surface-container font-medium" data-work-filter="web-digital-category">Web &amp; Digital</button></div>
 </div>
 <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
 <div class="relative w-full max-w-[420px]">
@@ -261,7 +261,7 @@ if (socialMediaSection) {
   }
 });
 const selectedWorkLinkStyle = document.createElement('style');
-selectedWorkLinkStyle.textContent = `.selected-work-link{display:inline-flex;align-items:center;border-radius:9999px;background:#f3ede9;color:#56423d;padding:.55rem .8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:background-color .2s ease,color .2s ease,transform .2s ease}.selected-work-link:hover{background:#9a4023;color:#fff;transform:translateY(-1px)}.selected-work-link:focus-visible{outline:2px solid #9a4023;outline-offset:2px}`;
+selectedWorkLinkStyle.textContent = `.selected-work-link{display:inline-flex;align-items:center;border-radius:9999px;background:#f3ede9;color:#56423d;padding:.55rem .8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:background-color .2s ease,color .2s ease,transform .2s ease}.selected-work-link:hover{background:#9a4023;color:#fff;transform:translateY(-1px)}.selected-work-link:focus-visible{outline:2px solid #9a4023;outline-offset:2px}.hero-work-filter{border:0;cursor:pointer;font:inherit;color:#56423d;transition:background-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}.hero-work-filter:hover,.hero-work-filter:focus-visible{background:#9a4023;color:#fff;transform:translateY(-1px);box-shadow:0 0 0 2px rgba(154,64,35,.14);outline:none}`;
 document.head.appendChild(selectedWorkLinkStyle);
 const selectedWorkTitle = Array.from(document.querySelectorAll('h2')).find(function (heading) {
   return heading.textContent.trim() === 'Selected Work';
@@ -310,6 +310,13 @@ if (selectedWorkContainer && selectedProjectGrid) {
     link.addEventListener('click', function (event) {
       event.preventDefault();
       activateSelectedCategory(link.getAttribute('href').slice(1));
+    });
+  });
+  document.querySelectorAll('[data-work-filter]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const category = button.dataset.workFilter;
+      activateSelectedCategory(category);
+      selectedWorkContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
   activateSelectedCategory('all-selected-work');
