@@ -48,7 +48,7 @@
 <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
 <div class="relative w-full max-w-[420px]">
 <div class="relative aspect-square w-full rounded-2xl overflow-hidden shadow-lg bg-surface-container-low border border-outline-variant/30">
-<img alt="Portrait of Ma'am Lyn" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AEtjO1W5y1JTgDmBL6aJT-IUUx5pnI_QeDfaQasQ49rqsaXle5SeBWz1aB-KtA9P8JAvRWw4-uYvq8Uh_bfltsGELyXV3sptEy3V5GgiHuw0SATMgm4JHetTKufuqZUWZ0Z7R7sT0SR6F9nH0AAjMUM-_SOKfNVCQ_7KuW4sRlp7l6vKnIAVmkYUBeCjKjCp7AunecXkCehi-a3hmSpulZkyKVuIW-f5YLRuuipqAw1gYm5k5bbfq5bMe0riO4M">
+<img alt="Portrait of Ma'am Lyn" class="w-full h-full object-cover object-center" src="/images/profile-pic.png">
 </div>
 <div class="mt-space-md p-space-sm rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-space-xs shadow-2xs">
 <span class="material-symbols-outlined text-primary text-lg shrink-0">lightbulb</span>
