@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    Options -Indexes
+    RewriteEngine On
+
+    # Keep application files and configuration private when the repository
+    # is deployed directly into public_html on shared hosting.
+    RewriteRule ^(?:\.env|app|bootstrap|config|database|resources|routes|storage|tests|vendor)(?:/|$) - [F,L,NC]
+    RewriteRule ^(?:artisan|composer\.(?:json|lock)|phpunit\.xml|README\.md)(?:/|$) - [F,L,NC]
+
+    # Serve existing public assets from Laravel's public directory.
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+    RewriteRule ^(.+)$ public/$1 [L]
+
+    # Send all other requests to Laravel's public front controller.
+    RewriteRule ^ public/index.php [L]
+</IfModule>
