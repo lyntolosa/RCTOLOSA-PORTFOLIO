@@ -261,7 +261,7 @@ if (socialMediaSection) {
   }
 });
 const selectedWorkLinkStyle = document.createElement('style');
-selectedWorkLinkStyle.textContent = `.selected-work-link{display:inline-flex;align-items:center;border-radius:9999px;background:#f3ede9;color:#56423d;padding:.55rem .8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:background-color .2s ease,color .2s ease,transform .2s ease}.selected-work-link:hover{background:#9a4023;color:#fff;transform:translateY(-1px)}.selected-work-link:focus-visible{outline:2px solid #9a4023;outline-offset:2px}.hero-work-filter{border:0;cursor:pointer;font:inherit;color:#56423d;transition:background-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}.hero-work-filter:hover,.hero-work-filter:focus-visible{background:#9a4023;color:#fff;transform:translateY(-1px);box-shadow:0 0 0 2px rgba(154,64,35,.14);outline:none}`;
+selectedWorkLinkStyle.textContent = `.selected-work-link{display:inline-flex;align-items:center;border-radius:9999px;background:#f3ede9;color:#56423d;padding:.55rem .8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:background-color .2s ease,color .2s ease,transform .2s ease}.selected-work-link:hover{background:#9a4023;color:#fff;transform:translateY(-1px)}.selected-work-link:focus-visible{outline:2px solid #9a4023;outline-offset:2px}.hero-work-filter{border:0;cursor:pointer;font:inherit;color:#56423d;transition:background-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}.hero-work-filter:hover,.hero-work-filter:focus-visible{background:#9a4023;color:#fff;transform:translateY(-1px);box-shadow:0 0 0 2px rgba(154,64,35,.14);outline:none}.ecommerce-demo-modal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:1.25rem;background:rgba(35,25,21,.5);backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .2s ease}.ecommerce-demo-modal.is-visible{opacity:1;pointer-events:auto}.ecommerce-demo-dialog{position:relative;width:min(100%,36rem);max-height:90vh;overflow:auto;border:1px solid rgba(154,64,35,.18);border-radius:1.25rem;background:#fffaf7;padding:2rem;color:#231916;box-shadow:0 24px 70px rgba(35,25,21,.25)}.ecommerce-demo-close{position:absolute;top:.8rem;right:1rem;border:0;background:none;color:#654e46;font-size:1.8rem;line-height:1;cursor:pointer}.ecommerce-demo-kicker{margin:0;color:#9a4023;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.ecommerce-demo-dialog h3{margin:.45rem 0 .5rem;font-family:Georgia,serif;font-size:2rem}.ecommerce-demo-note{margin:0 0 1.15rem;color:#654e46;line-height:1.5}.ecommerce-demo-account{margin-top:.8rem;padding:1rem 1.1rem;border:1px solid rgba(154,64,35,.15);border-radius:.8rem;background:#f7eee9}.ecommerce-demo-account h4{margin:0 0 .45rem;font-size:1rem}.ecommerce-demo-account a{color:#9a4023;font-weight:700;text-decoration:underline;text-underline-offset:3px}.ecommerce-demo-account p{margin:.4rem 0 0;color:#654e46;font-size:.88rem;overflow-wrap:anywhere}.ecommerce-demo-account code{color:#231916}.ecommerce-demo-disclaimer{margin:1.15rem 0 0;color:#9a4023;font-size:.8rem;font-weight:700}`;
 document.head.appendChild(selectedWorkLinkStyle);
 const selectedWorkTitle = Array.from(document.querySelectorAll('h2')).find(function (heading) {
   return heading.textContent.trim() === 'Selected Work';
@@ -488,7 +488,34 @@ if (ecommerceCard) {
   if (projectLabel) projectLabel.textContent = 'E-commerce Web App';
   if (detailText[0]) detailText[0].textContent = 'Create a polished online shopping experience that makes products easy to discover and purchase.';
   if (detailText[1]) detailText[1].textContent = 'A responsive storefront with product browsing, cart flow, and a simple sales dashboard.';
-  if (actionLinks[1]) actionLinks[1].textContent = 'View Storefront';
+  if (actionLinks[1]) {
+    actionLinks[1].textContent = 'View Storefront';
+    actionLinks[1].href = 'https://ecommerce-rctolosa-sample.maamlyn.com/shop';
+    actionLinks[1].target = '_blank';
+    actionLinks[1].rel = 'noopener';
+  }
+  if (actionLinks[0]) {
+    actionLinks[0].addEventListener('click', function (event) {
+      event.preventDefault();
+      let demoModal = document.querySelector('#ecommerce-demo-modal');
+      if (!demoModal) {
+        demoModal = document.createElement('div');
+        demoModal.id = 'ecommerce-demo-modal';
+        demoModal.className = 'ecommerce-demo-modal';
+        demoModal.innerHTML = `<div class="ecommerce-demo-dialog" role="dialog" aria-modal="true" aria-labelledby="ecommerce-demo-title"><button type="button" class="ecommerce-demo-close" aria-label="Close demo access">&times;</button><p class="ecommerce-demo-kicker">Demo access</p><h3 id="ecommerce-demo-title">E-commerce Web App</h3><p class="ecommerce-demo-note">Use these demo credentials to explore the customer and admin dashboards.</p><div class="ecommerce-demo-account"><h4>Customer Dashboard</h4><a href="https://ecommerce-rctolosa-sample.maamlyn.com/login" target="_blank" rel="noopener">Open Customer Login →</a><p><strong>Email:</strong> <code>rctolosa.customer@soleafashion.demo</code></p><p><strong>Password:</strong> <code>RCTOLOSA2026!</code></p></div><div class="ecommerce-demo-account"><h4>Admin Dashboard</h4><a href="https://ecommerce-rctolosa-sample.maamlyn.com/admin/login" target="_blank" rel="noopener">Open Admin Login →</a><p><strong>Email:</strong> <code>rctolosa.admin@soleafashion.demo</code></p><p><strong>Password:</strong> <code>RCTOLOSA2026!</code></p></div><p class="ecommerce-demo-disclaimer">Demo only — no real transactions.</p></div>`;
+        document.body.appendChild(demoModal);
+        const closeDemoModal = function () { demoModal.classList.remove('is-visible'); };
+        demoModal.querySelector('.ecommerce-demo-close').addEventListener('click', closeDemoModal);
+        demoModal.addEventListener('click', function (modalEvent) {
+          if (modalEvent.target === demoModal) closeDemoModal();
+        });
+        document.addEventListener('keydown', function (keyEvent) {
+          if (keyEvent.key === 'Escape') closeDemoModal();
+        });
+      }
+      demoModal.classList.add('is-visible');
+    });
+  }
 }
 if (selectedProjectGrid && !selectedProjectGrid.querySelector('[data-project="coach-funnel"]')) {
   const coachFunnelCard = document.createElement('div');
