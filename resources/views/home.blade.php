@@ -490,7 +490,7 @@ if (ecommerceCard) {
   if (detailText[1]) detailText[1].textContent = 'A responsive storefront with product browsing, cart flow, and a simple sales dashboard.';
   if (actionLinks[1]) {
     actionLinks[1].textContent = 'View Storefront';
-    actionLinks[1].href = 'https://ecommerce-rctolosa-sample.maamlyn.com/shop';
+    actionLinks[1].href = 'https://ecommerce-rctolosa-sample.maamlyn.com/';
     actionLinks[1].target = '_blank';
     actionLinks[1].rel = 'noopener';
   }
