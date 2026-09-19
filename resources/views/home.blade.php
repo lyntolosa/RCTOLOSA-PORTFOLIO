@@ -26,7 +26,7 @@
 <main class="w-full pt-20 bg-background">
 <div class="flex flex-col w-full">
 <!-- 2. HERO SECTION -->
-<section class="relative w-full overflow-hidden pb-space-3xl pt-space-xl">
+<section class="relative w-full overflow-hidden pb-space-xl pt-space-2xl">
 <div class="max-w-[1280px] mx-auto px-gutter-mobile md:px-gutter-tablet lg:px-gutter-desktop">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
 <div class="lg:col-span-7 flex flex-col items-start">
@@ -67,7 +67,7 @@
 <div class="inline-flex items-center gap-1 text-primary font-label-sm text-xs uppercase tracking-widest font-bold mb-space-2xs">
 <span class="">Portfolio</span>
 </div>
-<h2 class="font-display-lg text-display-lg text-on-surface">Selected Work</h2>
+<h2 class="font-display-lg text-display-lg text-on-surface">Sample Works</h2>
 <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
         A mix of personal, concept, training, and practical projects showing how I approach specific digital problems.
       </p>
@@ -151,6 +151,7 @@ if (reel01Card) {
 }
 document.querySelectorAll('#creative-design-samples video').forEach(function (video) {
   video.addEventListener('loadeddata', function () {
+    if (video.poster) return;
     if (video.dataset.thumbnailReady) return;
     video.dataset.thumbnailReady = 'true';
     const captureTime = Math.min(Math.max(video.duration * 0.2, 0.5), 2.5);
@@ -401,7 +402,7 @@ if (selectedWorkWaveNav) {
   selectedWorkWaveObserver.observe(selectedWorkWaveNav);
 }
 const selectedWorkTitle = Array.from(document.querySelectorAll('h2')).find(function (heading) {
-  return heading.textContent.trim() === 'Selected Work';
+  return heading.textContent.trim() === 'Sample Works';
 });
 const selectedWorkContainer = selectedWorkTitle ? selectedWorkTitle.closest('#work') : null;
 const selectedProjectGrid = Array.from(document.querySelectorAll('.grid')).find(function (grid) {
@@ -410,6 +411,18 @@ const selectedProjectGrid = Array.from(document.querySelectorAll('.grid')).find(
     return projectTitle && projectTitle.textContent.trim() === 'GuroGrid';
   });
 });
+if (selectedProjectGrid) {
+  const creativeDesignCard = Array.from(selectedProjectGrid.children).find(function (card) {
+    const projectTitle = card.querySelector('h3');
+    return projectTitle && projectTitle.textContent.trim() === 'Creative Design & Template Suite';
+  });
+  if (creativeDesignCard) creativeDesignCard.remove();
+  const socialMediaCard = Array.from(selectedProjectGrid.children).find(function (card) {
+    const projectTitle = card.querySelector('h3');
+    return projectTitle && projectTitle.textContent.trim() === 'Social Media Content & Strategy';
+  });
+  if (socialMediaCard) selectedProjectGrid.prepend(socialMediaCard);
+}
 if (selectedWorkContainer && selectedProjectGrid) {
   const selectedCategoryNavigation = document.createElement('nav');
   selectedCategoryNavigation.setAttribute('aria-label', 'Selected work categories');
@@ -419,8 +432,12 @@ if (selectedWorkContainer && selectedProjectGrid) {
   const selectedWorkIntro = selectedWorkTitle.closest('.max-w-2xl') || selectedWorkTitle.parentElement;
   selectedWorkIntro.appendChild(selectedCategoryNavigation);
 
-  Array.from(selectedProjectGrid.children).forEach(function (card, index) {
-    card.dataset.selectedCategory = index < 3 ? 'web-digital-category' : index === 3 ? 'social-content-category' : 'ads-creative-category';
+  Array.from(selectedProjectGrid.children).forEach(function (card) {
+    const projectTitle = card.querySelector('h3');
+    const title = projectTitle ? projectTitle.textContent.trim() : '';
+    card.dataset.selectedCategory = title === 'Social Media Content & Strategy'
+      ? 'social-content-category'
+      : 'web-digital-category';
     card.classList.add('selected-project-card');
   });
 
@@ -471,6 +488,11 @@ if (selectedWorkNavigation && selectedWorkSection && creativeDesignSection) {
     primeNestReelCard.classList.add('overflow-hidden');
     primeNestReelCard.innerHTML = `<video controls playsinline preload="metadata" class="w-full aspect-[9/16] rounded-lg object-cover bg-black"><source src="{{ asset('videos/primenest-non-ai-reel-01.mp4') }}" type="video/mp4">Your browser does not support the video tag.</video><p class="font-label-sm text-[10px] uppercase tracking-wider text-primary mt-3">PrimeNest Realty</p><p class="font-body-sm text-xs text-on-surface font-semibold mt-1">PrimeNest Realty Reel</p>`;
   }
+  const glowHausReelCard = nonAiReelsGrid ? nonAiReelsGrid.children[1] : null;
+  if (glowHausReelCard) {
+    glowHausReelCard.classList.add('overflow-hidden');
+    glowHausReelCard.innerHTML = `<video controls playsinline preload="metadata" class="w-full aspect-[9/16] rounded-lg object-cover bg-black"><source src="{{ asset('videos/glowhaus-non-ai-reel-02.mp4') }}" type="video/mp4">Your browser does not support the video tag.</video><p class="font-label-sm text-[10px] uppercase tracking-wider text-primary mt-3">GlowHaus Beauty Studio</p><p class="font-body-sm text-xs text-on-surface font-semibold mt-1">GlowHaus Beauty Studio Reel</p>`;
+  }
   const soleaReelCard = nonAiReelsGrid ? nonAiReelsGrid.children[4] : null;
   if (soleaReelCard) {
     soleaReelCard.classList.add('overflow-hidden');
@@ -486,6 +508,21 @@ if (selectedWorkNavigation && selectedWorkSection && creativeDesignSection) {
     brewBloomReelCard.classList.add('overflow-hidden');
     brewBloomReelCard.innerHTML = `<video controls playsinline preload="metadata" class="w-full aspect-[9/16] rounded-lg object-cover bg-black"><source src="{{ asset('videos/brew-bloom-non-ai-reel-03.mp4') }}" type="video/mp4">Your browser does not support the video tag.</video><p class="font-label-sm text-[10px] uppercase tracking-wider text-primary mt-3">Brew &amp; Bloom Café</p><p class="font-body-sm text-xs text-on-surface font-semibold mt-1">Brew &amp; Bloom Café Reel</p>`;
   }
+  function shuffleReelCards(grid) {
+    if (!grid) return;
+    const cards = Array.from(grid.children);
+    for (let index = cards.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      grid.appendChild(cards[randomIndex]);
+      cards.splice(randomIndex, 1);
+    }
+    cards.forEach(function (card) { grid.appendChild(card); });
+  }
+  [selectedWorkSection, creativeDesignSection].forEach(function (source) {
+    source.querySelectorAll('video').forEach(function (video) {
+      video.setAttribute('loop', '');
+    });
+  });
   const panelDefinitions = [
     ['non-ai-graphics', 'non-ai-reels', selectedWorkSection],
     ['non-ai-reels', 'copywriting-samples', selectedWorkSection],
@@ -597,6 +634,29 @@ if (selectedWorkNavigation && selectedWorkSection && creativeDesignSection) {
     });
   }
   panels.forEach(bindCopyButtons);
+  document.addEventListener('play', function (event) {
+    const activeVideo = event.target;
+    if (!(activeVideo instanceof HTMLVideoElement)) return;
+    document.querySelectorAll('video').forEach(function (video) {
+      if (video !== activeVideo && !video.paused) video.pause();
+    });
+  }, true);
+  function pauseAllPortfolioVideos() {
+    document.querySelectorAll('video').forEach(function (video) {
+      if (!video.paused) video.pause();
+    });
+  }
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('video')) pauseAllPortfolioVideos();
+  });
+  const videoVisibilityObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) entry.target.pause();
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('video').forEach(function (video) {
+    videoVisibilityObserver.observe(video);
+  });
   function activateSelectedWorkPanel(panelId) {
     panels.forEach(function (panel) {
       panel.classList.toggle('is-active', panel.dataset.panelId === panelId);
@@ -672,8 +732,8 @@ const localImagesByAlt = {
   "Portrait of Ma'am Lyn": '/images/profile-pic.png',
   'GuroGrid digital educational planners and lesson templates': '/images/non-ai-graphic-04-learnlab.png',
   'ResortFlow resort booking and hospitality dashboard mockup': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=85',
-  'DriveFlow car rental reservations and fleet dashboard': '/images/non-ai-graphic-01-primenest.png',
-  'Social media carousel slides and visual grid mockup': '/images/non-ai-graphic-03-brew-bloom.png',
+  'DriveFlow car rental reservations and fleet dashboard': '/images/driveflow-thumbnail.png',
+  'Social media carousel slides and visual grid mockup': '/images/social-content-strategy-thumbnail.png',
   'Aesthetic mockup presentation of social media creatives and Canva templates': '/images/non-ai-graphic-05-solea.png'
 };
 Object.keys(localImagesByAlt).forEach(function (alt) {
@@ -734,4 +794,52 @@ if (selectedProjectGrid && !selectedProjectGrid.querySelector('[data-project="co
   coachFunnelCard.innerHTML = `<div class="relative aspect-[4/3] w-full overflow-hidden bg-surface-container"><img alt="Sales funnel system for online coaches" class="w-full h-full object-cover" src="{{ asset('images/sales-funnel-online-coaches-thumbnail.png') }}"><div class="absolute top-3 left-3"><span class="px-2.5 py-1 rounded bg-surface-container-lowest/95 backdrop-blur-md text-on-surface font-label-sm text-[10px] font-bold uppercase tracking-wider shadow-2xs">Funnel Services Project</span></div></div><div class="p-space-lg flex flex-col justify-between flex-1"><div class="mb-space-md"><h3 class="font-headline-sm text-xl text-on-surface font-bold mb-space-xs">Sales Funnel for Online Coaches</h3><div class="space-y-2 text-xs"><div><span class="font-label-sm uppercase tracking-wider text-[10px] font-bold text-primary block">Goal</span><p class="font-body-sm text-on-surface-variant leading-relaxed">Help online coaches turn interested visitors into qualified calls and program enrollments without relying on expensive all-in-one platforms.</p></div><div class="pt-1"><span class="font-label-sm uppercase tracking-wider text-[10px] font-bold text-secondary block">Solution / What I Created</span><p class="font-body-sm text-on-surface-variant leading-relaxed">A self-hosted conversion funnel with landing pages, direct-response copy, lead capture, nurture flow, checkout paths, analytics, and a booking CTA.</p></div></div></div><div class="flex flex-wrap items-center gap-2 pt-space-xs border-t border-outline-variant/20"><a class="px-space-sm py-1.5 rounded bg-primary text-on-primary font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-tertiary transition-colors" href="#contact">View Details</a><a class="px-space-sm py-1.5 rounded bg-surface-container text-on-surface font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-surface-container-highest transition-colors" href="#contact">View Funnel Flow</a></div></div>`;
   selectedProjectGrid.appendChild(coachFunnelCard);
 }
+const selectedProjectTitleUpdates = {
+  ResortFlow: 'Resort Booking App',
+  DriveFlow: 'Car Rental & Fleet App'
+};
+document.querySelectorAll('#work span, #work h3').forEach(function (element) {
+  const label = element.textContent.trim();
+  if (label === 'Selected Work') element.textContent = 'Sample Works';
+  if (label === 'Selected work across content, design, video, and copywriting.') {
+    element.textContent = 'Sample works across content, design, video, and copywriting.';
+  }
+});
+const sampleWorksLabels = {
+  'Filter selected work': 'Filter sample works',
+  'Selected work navigation': 'Sample works navigation',
+  'Selected work categories': 'Sample works categories'
+};
+Object.keys(sampleWorksLabels).forEach(function (label) {
+  document.querySelectorAll('[aria-label="' + label + '"]').forEach(function (element) {
+    element.setAttribute('aria-label', sampleWorksLabels[label]);
+  });
+});
+document.querySelectorAll('a[href="#all-selected-work"]').forEach(function (link) {
+  if (link.textContent.trim() === 'All selected work') link.textContent = 'All sample works';
+});
+document.querySelectorAll('#work h3').forEach(function (heading) {
+  const updatedTitle = selectedProjectTitleUpdates[heading.textContent.trim()];
+  if (updatedTitle) heading.textContent = updatedTitle;
+});
+const reelPosters = {
+  'primenest-non-ai-reel-01.mp4': "{{ asset('images/reel-posters/non-ai-primenest.jpg') }}",
+  'glowhaus-non-ai-reel-02.mp4': "{{ asset('images/reel-posters/non-ai-glowhaus.jpg') }}",
+  'brew-bloom-non-ai-reel-03.mp4': "{{ asset('images/reel-posters/non-ai-brew-bloom.jpg') }}",
+  'learnlab-non-ai-reel-04.mp4': "{{ asset('images/reel-posters/non-ai-learnlab.jpg') }}",
+  'solea-non-ai-reel-05.mp4': "{{ asset('images/reel-posters/non-ai-solea.jpg') }}",
+  'ai-reel-01-primenest.mp4': "{{ asset('images/reel-posters/ai-primenest.jpg') }}",
+  'ai-reel-01-glowhaus.mp4': "{{ asset('images/reel-posters/ai-glowhaus.jpg') }}",
+  'ai-reel-03-brew-bloom.mp4': "{{ asset('images/reel-posters/ai-brew-bloom.jpg') }}",
+  'ai-reel-04-learnlab.mp4': "{{ asset('images/reel-posters/ai-learnlab.jpg') }}",
+  'ai-reel-05-solea.mp4': "{{ asset('images/reel-posters/ai-solea.jpg') }}"
+};
+document.querySelectorAll('#social-media-samples video, #creative-design-samples video').forEach(function (video) {
+  const source = video.querySelector('source');
+  if (!source) return;
+  const matchingFile = Object.keys(reelPosters).find(function (file) {
+    return source.src.includes(file);
+  });
+  if (matchingFile) video.setAttribute('poster', reelPosters[matchingFile]);
+});
 </script><script src="{{ asset('js/app.js') }}"></script></body></html>
