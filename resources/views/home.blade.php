@@ -853,6 +853,22 @@ const projectDemoLinks = {
   'Car Rental & Fleet App': 'https://driveflow.maamlyn.com',
   'Sales Funnel for Online Coaches': 'https://salesfunnel.maamlyn.com'
 };
+const projectsWithoutDetailsButton = [
+  'Social Media Content & Strategy',
+  'Resort Booking App',
+  'Car Rental & Fleet App',
+  'Sales Funnel for Online Coaches'
+];
+projectsWithoutDetailsButton.forEach(function (projectTitle) {
+  const heading = Array.from(document.querySelectorAll('#work h3')).find(function (candidate) {
+    return candidate.textContent.trim() === projectTitle;
+  });
+  const card = heading ? heading.closest('.rounded-2xl') : null;
+  const detailsLink = card ? Array.from(card.querySelectorAll('a')).find(function (link) {
+    return link.textContent.trim() === 'View Details';
+  }) : null;
+  if (detailsLink) detailsLink.remove();
+});
 Object.keys(projectDemoLinks).forEach(function (projectTitle) {
   const heading = Array.from(document.querySelectorAll('#work h3')).find(function (candidate) {
     return candidate.textContent.trim() === projectTitle;
