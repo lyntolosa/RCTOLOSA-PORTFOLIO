@@ -848,6 +848,46 @@ document.querySelectorAll('#work h3').forEach(function (heading) {
   const updatedTitle = selectedProjectTitleUpdates[heading.textContent.trim()];
   if (updatedTitle) heading.textContent = updatedTitle;
 });
+const projectDemoLinks = {
+  'Resort Booking App': 'https://resortflowsample.maamlyn.com',
+  'Car Rental & Fleet App': 'https://driveflow.maamlyn.com',
+  'Sales Funnel for Online Coaches': 'https://salesfunnel.maamlyn.com'
+};
+Object.keys(projectDemoLinks).forEach(function (projectTitle) {
+  const heading = Array.from(document.querySelectorAll('#work h3')).find(function (candidate) {
+    return candidate.textContent.trim() === projectTitle;
+  });
+  const card = heading ? heading.closest('.rounded-2xl') : null;
+  const demoLink = card ? Array.from(card.querySelectorAll('a')).find(function (link) {
+    return ['Live Demo', 'View Funnel Flow'].includes(link.textContent.trim());
+  }) : null;
+  if (demoLink) {
+    demoLink.href = projectDemoLinks[projectTitle];
+    demoLink.target = '_blank';
+    demoLink.rel = 'noopener';
+  }
+});
+const calendlyUrl = 'https://calendly.com/ronalyntolosa24/30min';
+document.querySelectorAll('a').forEach(function (link) {
+  if (/book a discovery call/i.test(link.textContent.trim())) {
+    link.href = calendlyUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+  }
+});
+document.querySelectorAll('a[href^="mailto:inquiries@maamlyn.com"]').forEach(function (link) {
+  link.href = 'mailto:ronalyn.tolosa24@gmail.com';
+  link.textContent = 'ronalyn.tolosa24@gmail.com';
+});
+@if (session('contact_success'))
+const contactForm = document.querySelector('#contact form');
+if (contactForm) {
+  const contactNotice = document.createElement('div');
+  contactNotice.className = 'mb-space-md rounded-xl border border-primary/30 bg-primary/10 px-space-md py-space-sm text-sm text-on-surface';
+  contactNotice.textContent = @json(session('contact_success'));
+  contactForm.parentElement.insertBefore(contactNotice, contactForm);
+}
+@endif
 const reelPosters = {
   'primenest-non-ai-reel-01.mp4': "{{ asset('images/reel-posters/non-ai-primenest.jpg') }}",
   'glowhaus-non-ai-reel-02.mp4': "{{ asset('images/reel-posters/non-ai-glowhaus.jpg') }}",
