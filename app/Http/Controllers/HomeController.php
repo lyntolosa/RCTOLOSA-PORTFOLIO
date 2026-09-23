@@ -45,6 +45,11 @@ class HomeController extends Controller
                 ->subject($subject);
         });
 
-        return redirect()->to('/#contact')->with('contact_success', 'Thanks! Your inquiry has been sent. I’ll get back to you soon.');
+        return redirect()->to('/#contact')
+            ->with('contact_success', 'Thanks! Your inquiry has been sent. I’ll get back to you soon.')
+            ->with('contact_prefill', [
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+            ]);
     }
 }

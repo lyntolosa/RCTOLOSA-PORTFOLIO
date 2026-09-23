@@ -867,7 +867,7 @@ Object.keys(projectDemoLinks).forEach(function (projectTitle) {
     demoLink.rel = 'noopener';
   }
 });
-const calendlyUrl = 'https://calendly.com/ronalyntolosa24/30min';
+const calendlyUrl = 'https://calendly.com/ronalyntolosa24/portfolio-discovery-call';
 document.querySelectorAll('a').forEach(function (link) {
   if (/book a discovery call/i.test(link.textContent.trim())) {
     link.href = calendlyUrl;
@@ -879,14 +879,26 @@ document.querySelectorAll('a[href^="mailto:inquiries@maamlyn.com"]').forEach(fun
   link.href = 'mailto:ronalyn.tolosa24@gmail.com';
   link.textContent = 'ronalyn.tolosa24@gmail.com';
 });
+document.querySelectorAll('a[href="https://linkedin.com"]').forEach(function (link) {
+  const wrapper = link.parentElement;
+  if (wrapper && wrapper.children.length === 1) wrapper.remove();
+  else link.remove();
+});
 @if (session('contact_success'))
-const contactForm = document.querySelector('#contact form');
-if (contactForm) {
-  const contactNotice = document.createElement('div');
-  contactNotice.className = 'mb-space-md rounded-xl border border-primary/30 bg-primary/10 px-space-md py-space-sm text-sm text-on-surface';
-  contactNotice.textContent = @json(session('contact_success'));
-  contactForm.parentElement.insertBefore(contactNotice, contactForm);
-}
+const contactSuccessOverlay = document.createElement('div');
+contactSuccessOverlay.className = 'exit-intent-overlay is-visible';
+contactSuccessOverlay.setAttribute('role', 'dialog');
+contactSuccessOverlay.setAttribute('aria-modal', 'true');
+contactSuccessOverlay.setAttribute('aria-labelledby', 'contact-success-title');
+const contactPrefill = @json(session('contact_prefill', []));
+const prefilledCalendlyUrl = calendlyUrl + '?name=' + encodeURIComponent(contactPrefill.name || '') + '&email=' + encodeURIComponent(contactPrefill.email || '');
+contactSuccessOverlay.innerHTML = `<div class="exit-intent-card"><div class="exit-intent-kicker">Inquiry received</div><h2 id="contact-success-title" class="exit-intent-title">Thank you for reaching out.</h2><p class="exit-intent-copy">${@json(session('contact_success'))}</p><p class="exit-intent-copy">Want to talk through it sooner? You can book a discovery call below.</p><div class="exit-intent-actions"><a class="exit-intent-primary" href="${prefilledCalendlyUrl}" target="_blank" rel="noopener">Book a Discovery Call</a><a class="exit-intent-secondary" href="#work">Back to My Work</a></div></div>`;
+document.body.appendChild(contactSuccessOverlay);
+contactSuccessOverlay.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    contactSuccessOverlay.remove();
+  });
+});
 @endif
 const reelPosters = {
   'primenest-non-ai-reel-01.mp4': "{{ asset('images/reel-posters/non-ai-primenest.jpg') }}",
