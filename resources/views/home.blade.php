@@ -405,6 +405,16 @@ const selectedWorkTitle = Array.from(document.querySelectorAll('h2')).find(funct
   return heading.textContent.trim() === 'Sample Works';
 });
 const selectedWorkContainer = selectedWorkTitle ? selectedWorkTitle.closest('#work') : null;
+const aboutSkillsGrid = Array.from(document.querySelectorAll('#about .grid')).find(function (grid) {
+  return grid.children.length === 4;
+});
+if (aboutSkillsGrid && !document.getElementById('communication-collaboration-skill')) {
+  const communicationCard = document.createElement('div');
+  communicationCard.id = 'communication-collaboration-skill';
+  communicationCard.className = 'p-space-lg rounded-xl bg-surface-container-low border border-outline-variant/20';
+  communicationCard.innerHTML = '<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-sm"><span class="material-symbols-outlined text-lg">forum</span></div><h4 class="font-headline-sm text-base font-bold text-on-surface mb-1">Communication &amp; Collaboration</h4><p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">Clear updates, organized feedback, discovery calls, and reliable remote collaboration through Zoom, Google Meet, and email.</p>';
+  aboutSkillsGrid.appendChild(communicationCard);
+}
 const selectedProjectGrid = Array.from(document.querySelectorAll('.grid')).find(function (grid) {
   return Array.from(grid.children).some(function (card) {
     const projectTitle = card.querySelector('h3');
@@ -916,6 +926,217 @@ contactSuccessOverlay.querySelectorAll('a').forEach(function (link) {
   });
 });
 @endif
+const sampleWorksContainer = document.querySelector('#social-media-samples');
+const copywritingSamplesSection = document.querySelector('#copywriting-samples');
+const allSelectedWorkPanel = document.querySelector('.selected-work-panel[data-panel-id="all-selected-work"]');
+if (sampleWorksContainer && copywritingSamplesSection && allSelectedWorkPanel && !document.querySelector('#ai-education-samples')) {
+  const aiEducationSection = document.createElement('section');
+  aiEducationSection.id = 'ai-education-samples';
+  aiEducationSection.className = 'scroll-mt-28 mt-space-2xl';
+  aiEducationSection.innerHTML = `<div class="flex flex-wrap items-start justify-between gap-3 mb-space-lg"><div><p class="font-label-sm text-xs uppercase tracking-widest text-primary font-bold">AI Content &amp; Digital Education</p><h4 class="font-headline-sm text-xl text-on-surface font-bold mt-1">AI Content &amp; Digital Education Samples</h4><p class="font-body-sm text-sm text-on-surface-variant mt-1 max-w-2xl">Educational, promotional, and lead-generation content created for digital products, educators, and online business concepts.</p></div><span class="px-2.5 py-1 rounded bg-primary/10 text-primary font-label-sm text-[10px] uppercase tracking-wider font-bold">6 samples</span></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"><article class="rounded-xl border border-outline-variant/25 bg-surface-container p-4"><span class="font-label-sm text-[10px] uppercase tracking-wider text-primary font-bold">GuroGrid — Own Business</span><h5 class="font-headline-sm text-base text-on-surface font-bold mt-2">Educational Product Carousel</h5><p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-2">Clear, helpful slides that introduce digital teaching resources and make them easier to understand and explore.</p><span class="inline-flex mt-3 px-2 py-1 rounded bg-surface-container-lowest text-[10px] uppercase tracking-wider text-on-surface-variant font-semibold">Educational content</span></article><article class="rounded-xl border border-outline-variant/25 bg-surface-container p-4"><span class="font-label-sm text-[10px] uppercase tracking-wider text-primary font-bold">LearnLab Academy — Practice Project</span><h5 class="font-headline-sm text-base text-on-surface font-bold mt-2">Confidence-Building English Reel</h5><p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-2">A short-form educational concept using a relatable hook, practical tips, and a supportive call to action.</p><span class="inline-flex mt-3 px-2 py-1 rounded bg-surface-container-lowest text-[10px] uppercase tracking-wider text-on-surface-variant font-semibold">Short-form video</span></article><article class="rounded-xl border border-outline-variant/25 bg-surface-container p-4"><span class="font-label-sm text-[10px] uppercase tracking-wider text-primary font-bold">GuroGrid — Own Business</span><h5 class="font-headline-sm text-base text-on-surface font-bold mt-2">Digital Product Promotion</h5><p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-2">Promotional messaging designed to explain the product value, connect with educators, and encourage discovery.</p><span class="inline-flex mt-3 px-2 py-1 rounded bg-surface-container-lowest text-[10px] uppercase tracking-wider text-on-surface-variant font-semibold">Promotional content</span></article><article class="rounded-xl border border-outline-variant/25 bg-surface-container p-4"><span class="font-label-sm text-[10px] uppercase tracking-wider text-primary font-bold">LearnLab Academy — Practice Project</span><h5 class="font-headline-sm text-base text-on-surface font-bold mt-2">Free Practice Session Lead-In</h5><p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-2">A lead-generation concept that turns a common audience pain point into an invitation to join a supportive learning experience.</p><span class="inline-flex mt-3 px-2 py-1 rounded bg-surface-container-lowest text-[10px] uppercase tracking-wider text-on-surface-variant font-semibold">Lead generation</span></article><article class="rounded-xl border border-outline-variant/25 bg-surface-container p-4"><span class="font-label-sm text-[10px] uppercase tracking-wider text-primary font-bold">Salon Suite Coaching — Concept Project</span><h5 class="font-headline-sm text-base text-on-surface font-bold mt-2">Salon Suite Startup Checklist</h5><p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-2">A practical lead-magnet concept helping future salon suite owners think through costs, clients, and daily operations.</p><span class="inline-flex mt-3 px-2 py-1 rounded bg-surface-container-lowest text-[10px] uppercase tracking-wider text-on-surface-variant font-semibold">Lead-generation concept</span></article><article class="rounded-xl border border-outline-variant/25 bg-surface-container p-4"><span class="font-label-sm text-[10px] uppercase tracking-wider text-primary font-bold">Digital Education — Concept Project</span><h5 class="font-headline-sm text-base text-on-surface font-bold mt-2">Webinar Registration Campaign</h5><p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-2">A campaign concept with an authority-building hook, educational promise, registration CTA, and follow-up content direction.</p><span class="inline-flex mt-3 px-2 py-1 rounded bg-surface-container-lowest text-[10px] uppercase tracking-wider text-on-surface-variant font-semibold">Webinar promotion</span></article></div>`;
+  const creativeDesignPanelSection = allSelectedWorkPanel.querySelector('#creative-design-samples');
+  if (creativeDesignPanelSection) {
+    allSelectedWorkPanel.insertBefore(aiEducationSection, creativeDesignPanelSection);
+  } else {
+    allSelectedWorkPanel.appendChild(aiEducationSection);
+  }
+}
+const aiEducationSamples = document.querySelector('#ai-education-samples');
+if (aiEducationSamples) {
+  const sectionLabel = aiEducationSamples.querySelector('p');
+  const sectionTitle = aiEducationSamples.querySelector('h4');
+  const sectionDescription = aiEducationSamples.querySelector('h4 + p');
+  const sectionBadge = aiEducationSamples.querySelector('span');
+  if (sectionLabel) sectionLabel.textContent = 'EDUCATIONAL & LEAD GENERATION CONTENT';
+  if (sectionTitle) sectionTitle.textContent = 'Educational & Lead Generation Samples';
+  if (sectionDescription) sectionDescription.textContent = 'Strategic content samples designed to educate, promote digital products, and turn audience interest into registrations, inquiries, and bookings.';
+  if (sectionBadge) sectionBadge.textContent = '4 samples';
+  aiEducationSamples.querySelectorAll('article').forEach(function (card) {
+    const title = card.querySelector('h5');
+    if (!title) return;
+    if (title.textContent.includes('Confidence-Building English Reel') || title.textContent.includes('Digital Product Promotion')) {
+      card.remove();
+      return;
+    }
+    if (title.textContent.includes('Educational Product Carousel')) {
+      title.textContent = 'Educational Product Promo Sample';
+      const type = card.querySelector('span:last-child');
+      if (type) type.textContent = 'Educational product promotion';
+    }
+    if (title.textContent.includes('Free Practice Session Lead-In')) {
+      title.textContent = 'Free Practice Session with Ian';
+      const type = card.querySelector('span:last-child');
+      if (type) type.textContent = 'Lead-generation copy';
+    }
+    if (title.textContent.includes('Free Practice Session with Ian')) {
+      if (!card.querySelector('[data-practice-thumbnail]')) {
+        card.insertAdjacentHTML('afterbegin', `<img data-practice-thumbnail src="{{ asset('images/free-practice-session-ian.png') }}" alt="Cartoon English coach leading a practice session" class="w-full aspect-[4/3] object-cover rounded-lg mb-4">`);
+      }
+      if (!card.querySelector('[data-practice-modal-trigger]')) {
+        card.insertAdjacentHTML('beforeend', `<button type="button" data-practice-modal-trigger class="mt-4 inline-flex items-center justify-center px-3 py-2 rounded bg-primary text-on-primary font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-tertiary transition-colors">View Lead-Generation Sample</button>`);
+      }
+    }
+    if (title.textContent.includes('Salon Suite Startup Checklist')) {
+      if (!card.querySelector('[data-checklist-thumbnail]')) {
+        card.insertAdjacentHTML('afterbegin', `<img data-checklist-thumbnail src="{{ asset('images/salon-suite-checklist/page-1-cover.png') }}" alt="Salon Suite Startup Checklist cover page" class="w-full aspect-[4/3] object-cover rounded-lg mb-4">`);
+      }
+      if (!card.querySelector('[data-checklist-modal-trigger]')) {
+        card.insertAdjacentHTML('beforeend', `<button type="button" data-checklist-modal-trigger class="mt-4 inline-flex items-center justify-center px-3 py-2 rounded bg-primary text-on-primary font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-tertiary transition-colors">Show Example Checklist</button>`);
+      }
+    }
+    if (title.textContent.includes('Webinar Registration Campaign')) {
+      if (!card.querySelector('[data-webinar-thumbnail]')) {
+        card.insertAdjacentHTML('afterbegin', `<img data-webinar-thumbnail src="{{ asset('images/webinar-registration-campaign.png') }}" alt="Webinar registration campaign workspace" class="w-full aspect-[4/3] object-cover rounded-lg mb-4">`);
+      }
+      if (!card.querySelector('[data-webinar-modal-trigger]')) {
+        card.insertAdjacentHTML('beforeend', `<button type="button" data-webinar-modal-trigger class="mt-4 inline-flex items-center justify-center px-3 py-2 rounded bg-primary text-on-primary font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-tertiary transition-colors">View Webinar Campaign</button>`);
+      }
+    }
+    if (title.textContent.includes('Educational Product Promo Sample')) {
+      if (!card.querySelector('[data-product-promo-thumbnail]')) {
+        card.insertAdjacentHTML('afterbegin', `<img data-product-promo-thumbnail src="{{ asset('images/educational-product-promo-gurogrid.png') }}" alt="GuroGrid educational product promotion workspace" class="w-full aspect-[4/3] object-cover rounded-lg mb-4">`);
+      }
+      if (!card.querySelector('[data-product-promo-modal-trigger]')) {
+        card.insertAdjacentHTML('beforeend', `<button type="button" data-product-promo-modal-trigger class="mt-4 inline-flex items-center justify-center px-3 py-2 rounded bg-primary text-on-primary font-label-md text-xs font-semibold uppercase tracking-wider hover:bg-tertiary transition-colors">View Product Promo Sample</button>`);
+      }
+    }
+  });
+  if (!document.querySelector('#salon-suite-checklist-modal')) {
+    const checklistModal = document.createElement('div');
+    checklistModal.id = 'salon-suite-checklist-modal';
+    checklistModal.className = 'fixed inset-0 z-50 hidden bg-black/70 p-4 sm:p-8 overflow-y-auto';
+    checklistModal.innerHTML = `<div class="min-h-full flex items-start justify-center"><div class="relative w-full max-w-4xl rounded-2xl bg-surface-container-lowest p-4 sm:p-6 shadow-xl"><div class="sticky top-0 z-10 flex items-center justify-between gap-4 bg-surface-container-lowest pb-4"><div><p class="font-label-sm text-xs uppercase tracking-widest text-primary font-bold">Lead Magnet Sample</p><h3 class="font-headline-sm text-xl text-on-surface font-bold mt-1">Salon Suite Startup Checklist</h3></div><button type="button" data-checklist-modal-close aria-label="Close checklist preview" class="px-3 py-2 rounded bg-surface-container text-on-surface font-label-md text-xs font-semibold uppercase tracking-wider">Close</button></div><div class="grid gap-6"><img src="{{ asset('images/salon-suite-checklist/page-1-cover.png') }}" alt="Salon Suite Startup Checklist cover page" class="w-full rounded-xl border border-outline-variant/25 shadow-sm"><img src="{{ asset('images/salon-suite-checklist/page-2-plan.png') }}" alt="Salon Suite Startup Checklist planning page" class="w-full rounded-xl border border-outline-variant/25 shadow-sm"><img src="{{ asset('images/salon-suite-checklist/page-3-action.png') }}" alt="Salon Suite Startup Checklist action page" class="w-full rounded-xl border border-outline-variant/25 shadow-sm"></div></div></div>`;
+    document.body.appendChild(checklistModal);
+    const closeChecklistModal = function () {
+      checklistModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    };
+    checklistModal.querySelectorAll('[data-checklist-modal-close]').forEach(function (button) {
+      button.addEventListener('click', closeChecklistModal);
+    });
+    checklistModal.addEventListener('click', function (event) {
+      if (event.target === checklistModal) closeChecklistModal();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeChecklistModal();
+    });
+    aiEducationSamples.querySelectorAll('[data-checklist-modal-trigger]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        checklistModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+    });
+  }
+  if (!document.querySelector('#free-practice-session-modal')) {
+    const practiceModal = document.createElement('div');
+    practiceModal.id = 'free-practice-session-modal';
+    practiceModal.className = 'fixed inset-0 z-50 hidden bg-black/70 p-4 sm:p-8 overflow-y-auto';
+    practiceModal.innerHTML = `<div class="min-h-full flex items-start justify-center"><div class="relative w-full max-w-2xl rounded-2xl bg-surface-container-lowest p-4 sm:p-6 shadow-xl"><div class="sticky top-0 z-10 flex items-center justify-between gap-4 bg-surface-container-lowest pb-4"><div><p class="font-label-sm text-xs uppercase tracking-widest text-primary font-bold">Lead-Generation Copy Sample</p><h3 class="font-headline-sm text-xl text-on-surface font-bold mt-1">Free Practice Session with Ian</h3></div><button type="button" data-practice-modal-close aria-label="Close lead-generation sample" class="px-3 py-2 rounded bg-surface-container text-on-surface font-label-md text-xs font-semibold uppercase tracking-wider">Close</button></div><div class="space-y-4 font-body-sm text-sm text-on-surface"><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Hook</p><p class="mt-1">You know what to say in English—but when it is your turn to speak, your mind suddenly goes blank.</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Audience pain point</p><p class="mt-1">Many learners understand English and can write well, but hesitate because they are afraid of making mistakes or being judged.</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Strategic solution</p><p class="mt-1">A supportive, guided practice session gives learners a safe place to speak, receive useful feedback, and build confidence through repetition.</p></div><div class="rounded-xl bg-primary/10 p-4"><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Call to action</p><p class="mt-1 font-semibold">Join the free practice session and start speaking with more confidence.</p></div></div></div></div>`;
+    document.body.appendChild(practiceModal);
+    const closePracticeModal = function () {
+      practiceModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    };
+    practiceModal.querySelectorAll('[data-practice-modal-close]').forEach(function (button) {
+      button.addEventListener('click', closePracticeModal);
+    });
+    practiceModal.addEventListener('click', function (event) {
+      if (event.target === practiceModal) closePracticeModal();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closePracticeModal();
+    });
+    aiEducationSamples.querySelectorAll('[data-practice-modal-trigger]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        practiceModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+    });
+  }
+  if (!document.querySelector('#webinar-registration-modal')) {
+    const webinarModal = document.createElement('div');
+    webinarModal.id = 'webinar-registration-modal';
+    webinarModal.className = 'fixed inset-0 z-50 hidden bg-black/70 p-4 sm:p-8 overflow-y-auto';
+    webinarModal.innerHTML = `<div class="min-h-full flex items-start justify-center"><div class="relative w-full max-w-2xl rounded-2xl bg-surface-container-lowest p-4 sm:p-6 shadow-xl"><div class="sticky top-0 z-10 flex items-center justify-between gap-4 bg-surface-container-lowest pb-4"><div><p class="font-label-sm text-xs uppercase tracking-widest text-primary font-bold">Webinar Promotion Sample</p><h3 class="font-headline-sm text-xl text-on-surface font-bold mt-1">Webinar Registration Campaign</h3></div><button type="button" data-webinar-modal-close aria-label="Close webinar campaign sample" class="px-3 py-2 rounded bg-surface-container text-on-surface font-label-md text-xs font-semibold uppercase tracking-wider">Close</button></div><div class="space-y-4 font-body-sm text-sm text-on-surface"><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Webinar title</p><p class="mt-1 font-semibold">Build a Simple Content System That Brings Consistent Leads</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Target audience</p><p class="mt-1">Online coaches, educators, consultants, and small business owners who want a clearer content process.</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Main hook</p><p class="mt-1">Stop guessing what to post. Learn a practical content system you can repeat every week.</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Educational promise</p><p class="mt-1">Attendees will learn how to connect content ideas, audience pain points, and clear calls to action into one simple campaign flow.</p></div><div class="rounded-xl bg-primary/10 p-4"><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Registration CTA</p><p class="mt-1 font-semibold">Reserve your free seat and leave with a content plan you can actually use.</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Follow-up idea</p><p class="mt-1">Send a replay email with the worksheet, one quick-win reminder, and an invitation to discuss the next step.</p></div></div></div></div>`;
+    document.body.appendChild(webinarModal);
+    const closeWebinarModal = function () {
+      webinarModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    };
+    webinarModal.querySelectorAll('[data-webinar-modal-close]').forEach(function (button) {
+      button.addEventListener('click', closeWebinarModal);
+    });
+    webinarModal.addEventListener('click', function (event) {
+      if (event.target === webinarModal) closeWebinarModal();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeWebinarModal();
+    });
+    aiEducationSamples.querySelectorAll('[data-webinar-modal-trigger]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        webinarModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+    });
+  }
+  if (!document.querySelector('#educational-product-promo-modal')) {
+    const productPromoModal = document.createElement('div');
+    productPromoModal.id = 'educational-product-promo-modal';
+    productPromoModal.className = 'fixed inset-0 z-50 hidden bg-black/70 p-4 sm:p-8 overflow-y-auto';
+    productPromoModal.innerHTML = `<div class="min-h-full flex items-start justify-center"><div class="relative w-full max-w-3xl rounded-2xl bg-surface-container-lowest p-4 sm:p-6 shadow-xl"><div class="sticky top-0 z-10 flex items-center justify-between gap-4 bg-surface-container-lowest pb-4"><div><p class="font-label-sm text-xs uppercase tracking-widest text-primary font-bold">Educational Product Promotion Sample</p><h3 class="font-headline-sm text-xl text-on-surface font-bold mt-1">Educational Product Promo Carousel</h3></div><button type="button" data-product-promo-modal-close aria-label="Close product promotion sample" class="px-3 py-2 rounded bg-surface-container text-on-surface font-label-md text-xs font-semibold uppercase tracking-wider">Close</button></div><div class="relative overflow-hidden rounded-xl border border-outline-variant/25 bg-surface-container"><img data-product-promo-slide src="{{ asset('images/gurogrid-carousel/01-cover.png') }}" alt="GuroGrid educational product promotion carousel slide 1" class="block w-full aspect-[4/5] object-cover"><button type="button" data-product-promo-prev aria-label="Previous carousel slide" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-surface-container-lowest/90 px-3 py-2 text-on-surface shadow hover:bg-primary hover:text-on-primary transition-colors">‹</button><button type="button" data-product-promo-next aria-label="Next carousel slide" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-surface-container-lowest/90 px-3 py-2 text-on-surface shadow hover:bg-primary hover:text-on-primary transition-colors">›</button></div><div data-product-promo-indicators class="flex justify-center gap-2 py-4" aria-label="Carousel slide indicators"></div><div class="space-y-4 font-body-sm text-sm text-on-surface"><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Target audience</p><p class="mt-1">Teachers and educators who need practical, ready-to-use digital teaching resources.</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Audience problem</p><p class="mt-1">Planning lessons and creating useful classroom materials takes time, especially when every resource must be clear, organized, and easy to adapt.</p></div><div><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Product value</p><p class="mt-1">GuroGrid turns scattered teaching ideas into structured, easy-to-explore resources that help educators prepare with less friction.</p></div><div class="rounded-xl bg-primary/10 p-4"><p class="font-label-sm text-xs uppercase tracking-wider text-primary font-bold">Call to action</p><p class="mt-1 font-semibold">Explore the resource and find a simpler way to organize your next lesson.</p></div></div></div></div>`;
+    document.body.appendChild(productPromoModal);
+    const closeProductPromoModal = function () {
+      productPromoModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    };
+    productPromoModal.querySelectorAll('[data-product-promo-modal-close]').forEach(function (button) {
+      button.addEventListener('click', closeProductPromoModal);
+    });
+    productPromoModal.addEventListener('click', function (event) {
+      if (event.target === productPromoModal) closeProductPromoModal();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeProductPromoModal();
+    });
+    aiEducationSamples.querySelectorAll('[data-product-promo-modal-trigger]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        productPromoModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+    });
+    const productPromoSlides = [
+      { src: "{{ asset('images/gurogrid-carousel/01-cover.png') }}", alt: 'GuroGrid educational product promotion carousel cover slide' },
+      { src: "{{ asset('images/gurogrid-carousel/02-friction.png') }}", alt: 'GuroGrid carousel slide showing the teacher planning problem' },
+      { src: "{{ asset('images/gurogrid-carousel/03-shift.png') }}", alt: 'GuroGrid carousel slide showing the simpler resource workflow' },
+      { src: "{{ asset('images/gurogrid-carousel/04-benefit.png') }}", alt: 'GuroGrid carousel slide showing the benefits for educators' },
+      { src: "{{ asset('images/gurogrid-carousel/05-cta.png') }}", alt: 'GuroGrid carousel call-to-action slide' }
+    ];
+    const productPromoSlide = productPromoModal.querySelector('[data-product-promo-slide]');
+    const productPromoIndicators = productPromoModal.querySelector('[data-product-promo-indicators]');
+    let productPromoSlideIndex = 0;
+    const renderProductPromoSlide = function (index) {
+      productPromoSlideIndex = (index + productPromoSlides.length) % productPromoSlides.length;
+      productPromoSlide.src = productPromoSlides[productPromoSlideIndex].src;
+      productPromoSlide.alt = productPromoSlides[productPromoSlideIndex].alt;
+      productPromoIndicators.innerHTML = productPromoSlides.map(function (_, slideIndex) {
+        const activeClasses = slideIndex === productPromoSlideIndex ? 'bg-primary' : 'bg-outline-variant/50';
+        return `<button type="button" data-product-promo-indicator="${slideIndex}" aria-label="Go to carousel slide ${slideIndex + 1}" class="h-2.5 w-2.5 rounded-full ${activeClasses} transition-colors"></button>`;
+      }).join('');
+      productPromoIndicators.querySelectorAll('[data-product-promo-indicator]').forEach(function (indicator) {
+        indicator.addEventListener('click', function () {
+          renderProductPromoSlide(Number(indicator.dataset.productPromoIndicator));
+        });
+      });
+    };
+    productPromoModal.querySelector('[data-product-promo-prev]').addEventListener('click', function () {
+      renderProductPromoSlide(productPromoSlideIndex - 1);
+    });
+    productPromoModal.querySelector('[data-product-promo-next]').addEventListener('click', function () {
+      renderProductPromoSlide(productPromoSlideIndex + 1);
+    });
+    renderProductPromoSlide(0);
+  }
+}
 const reelPosters = {
   'primenest-non-ai-reel-01.mp4': "{{ asset('images/reel-posters/non-ai-primenest.jpg') }}",
   'glowhaus-non-ai-reel-02.mp4': "{{ asset('images/reel-posters/non-ai-glowhaus.jpg') }}",
