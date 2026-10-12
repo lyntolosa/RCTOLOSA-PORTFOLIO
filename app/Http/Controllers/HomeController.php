@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('portfolio');
+        return view('home');
     }
 
     public function generate(Request $request)
